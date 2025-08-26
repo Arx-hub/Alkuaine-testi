@@ -6,6 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        SaveManager saveManager = new SaveManager();
         var lines = File.ReadAllLines("alkuaineet.txt"); // Luetaan alkuaineet tiedostosta taulukkoon
         List<string> elements = lines.ToList();          // Muutetaan taulukko listaksi
 
@@ -58,10 +59,12 @@ class Program
                     Console.WriteLine($"Sait {correct} oikein, ja {incorrect} väärin.");
 
                     // Tulosten tallentamisen koodi
+                    saveManager.Save(correct, incorrect);
 
                     exit = true;
                     break;
                 case "t": // Tulosten tarkastelun koodi
+                    saveManager.Load();
                     exit = true;
                     break;
                 default:
