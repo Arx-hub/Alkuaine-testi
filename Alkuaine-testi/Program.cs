@@ -42,6 +42,12 @@ class Program
                             incorrect++;
                             return;
                         }
+                        /* else
+                        {
+                            Console.WriteLine("Et voi antaa samaa vastausta useammin kuin kerran.");
+                            i--;
+                            return;
+                        } */
                     }
 
                     foreach (string answer in answers) // Tarkastetaan vastaukset ja lisätään
