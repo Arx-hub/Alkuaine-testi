@@ -10,10 +10,22 @@ class Program
         var lines = File.ReadAllLines("alkuaineet.txt"); // Luetaan alkuaineet tiedostosta taulukkoon
         List<string> elements = lines.ToList();          // Muutetaan taulukko listaksi
 
+        Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("******************************");
+            Console.WriteLine("* Tervetuloa alkuainepeliin! *");
+            Console.WriteLine("******************************");
+            Console.ResetColor();
+            Console.WriteLine("Paina 'enter' jatkaaksesi");
+            Console.ReadLine();
+            Console.Clear();
+
+
         bool exit = false;
         while (!exit)
         {
-            Console.WriteLine("Tervetuloa alkuainepeliin! Haluatko pelata (p) vai tarkastella tuloksia (t)?");
+           
+            
+            Console.WriteLine("Haluatko pelata (p), tarkastella tuloksia (t), poistua pelistä (x)?");
             string choice = Console.ReadLine()?.ToLower() ?? ""; // Kysytään käyttäjältä syöte, muutetaan se
                                                                  // pieniksi kirjaimiksi, mikäli syöte on
             if (string.IsNullOrEmpty(choice))                    // null, korvataan se tyhjällä merkkijonolla
@@ -61,13 +73,16 @@ class Program
                             incorrect++;
                         }
                     }
-
-                    Console.WriteLine($"Sait {correct} oikein, ja {incorrect} väärin.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("*********************************");
+                    Console.WriteLine($"* Sait {correct} oikein, ja {incorrect} väärin. *");
+                    Console.WriteLine("*********************************");
+                    Console.ResetColor();
 
                     // Tulosten tallentamisen koodi
                     saveManager.Save(correct, incorrect);
 
-                    exit = true;
+                    
                     break;
 
                 case "t": // Tulosten tarkastelun koodi
@@ -75,10 +90,23 @@ class Program
                         // Kutsutaan Load-metodia, joka lukee kaikki tulokset ja laskee keskiarvon.
                         saveManager.Load();
 
-                        exit = true;
                         break;
                     }
 
+                case "x": // Poistutaan pelistä.
+                    {
+                        Console.Clear();
+
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        
+                        Console.WriteLine("***************************");
+                        Console.WriteLine("* Kiitoksia pelaamisesta! *");
+                        Console.WriteLine("***************************");
+                        Console.ResetColor();
+                        exit = true;
+                        break;
+                    }
                 default:
                     Console.WriteLine($"{choice} ei ole hyväksytty valinta, yritä uudestaan.");
                     break;
