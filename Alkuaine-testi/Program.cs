@@ -69,10 +69,16 @@ class Program
 
                     exit = true;
                     break;
+
                 case "t": // Tulosten tarkastelun koodi
-                    saveManager.Load();
-                    exit = true;
-                    break;
+                    {
+                        // Kutsutaan Load-metodia, joka lukee kaikki tulokset ja laskee keskiarvon.
+                        saveManager.Load();
+
+                        exit = true;
+                        break;
+                    }
+
                 default:
                     Console.WriteLine($"{choice} ei ole hyväksytty valinta, yritä uudestaan.");
                     break;
