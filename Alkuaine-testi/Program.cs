@@ -40,7 +40,7 @@ class Program
                         else
                         {
                             incorrect++;
-                            return;
+                            continue;
                         }
                         /* else
                         {
