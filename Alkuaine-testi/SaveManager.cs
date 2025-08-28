@@ -55,9 +55,20 @@ namespace Alkuaine_testi
             if (savedPercentages.Count == 0) Console.WriteLine("Ei tallennettuja tuloksia!");
             else
             {
+                Console.Clear();
                 double averageResult = totalOfAllPercentages / savedPercentages.Count();
-                Console.WriteLine($"{savedPercentages.Count()} tallennettua tulosta löydetty!");
-                Console.WriteLine($"Tallennettujen tulosten keskiarvo:{averageResult}%");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("**************************************");
+                Console.WriteLine($"* {savedPercentages.Count()} tallennettua tulosta löydetty! *");
+                Console.WriteLine("**************************************");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.WriteLine("********************************************************");
+                Console.WriteLine($"* Tallennettujen tulosten keskiarvo:{averageResult}% *");
+                Console.WriteLine("********************************************************");
+                Console.ResetColor();
             }
 
         }
