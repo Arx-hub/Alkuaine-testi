@@ -41,8 +41,17 @@ class Program
                     int correct = 0;                           // Laskuri oikeille vastauksille
                     int incorrect = 0;                         // Laskuri väärille vastauksille
 
-                    Console.WriteLine("Syötä viisi ensimmäisestä 20 alkuaineesta yksi kerrallaan.");
-                    for (int i = 0; i < 5; i++)
+                    Console.WriteLine("Valitse vaikeustaso: helppo (h), keksi (k), vaikea(v), extreme(e)");
+                    string level = Console.ReadLine()?.ToLower() ?? "k"; //Select difficulty if no difficulty is selected keksi difficulty is chosen by default
+
+                    
+
+                    int questionsToAsk = level == "h" ? 3 : level == "k" ? 5 : level == "v" ? 10 : 20;//Diferent ranges depending on the selected difficutly 20 being the extreme difficutly
+                    Console.WriteLine($"Syötä {questionsToAsk} ensimmäisestä 20 alkuaineesta yksi kerrallaan.");
+
+                                             
+                    // Console.WriteLine("Syötä viisi ensimmäisestä 20 alkuaineesta yksi kerrallaan.");
+                    for (int i = 0; i < questionsToAsk; i++)
                     {
                         string answer = Console.ReadLine()?.ToLower() ?? "";
                         if (!answers.Contains(answer)) // Tarkastetaan että vastaus ei ole jo listassa
